@@ -3,6 +3,8 @@
 
 from math import exp, sqrt
 
+# FILE INPUT HERE
+
 s = ""
 vars = s.split('\t')
 
@@ -37,15 +39,18 @@ def branch(price, dir): # price is float, dir is boolean where true represents u
 # Data structure for Binary Tree and Binary Tree Node
 class BinaryTree():
     def __init__(self, n):
-        self.root = BinaryTreeNode(0)
+        self.root = BinaryTreeNode(0, None, 0)
 
 class BinaryTreeNode():
-    def  __init__(self, time):
-        self.left = None
-        self.right = None
+    def  __init__(self, time, parent, dir): # factor in direction from old branch method when creating new nodes?  Pass in parent as a reference?
+        if time < n: # Branch and create two children
+            self.left = BinaryTreeNode(time + t, self, -1)
+            self.right = BinaryTreeNode(time + t, self, 1)
+        else: # LEAF NODE CASE
+            self.left = None
+            self.right = None
         self.parent = None # FIX LATER
         self.stock_price = s_0 * exp(r * time)
         f_u = self.parent.stock_price * u
         f_d = self.parent.stock_price * d
-        self.f = exp(-r * t) * (p * f_u + (1 - p) * f_d)# Fix 't', if it is supposed to represent the TOTAL time
-
+        self.f = exp(-r * t) * (p * f_u + (1 - p) * f_d) # Fix 't', if it is supposed to represent the TOTAL time
