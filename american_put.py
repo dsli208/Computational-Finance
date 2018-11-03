@@ -3,22 +3,58 @@
 
 from math import exp, sqrt
 
-filename = "hello.txt"
+
+# Data structure for Binary Tree and Binary Tree Node
+class BinaryTree():
+    def __init__(self, r, n, s_0, k, p):
+        self.root = BinaryTreeNode(0, None, 0, r, t, k, p)
+
+class BinaryTreeNode(): # time_period ranges from 0 to n, and is basically the level/ of the tree
+    def  __init__(self, time_period, parent, dir, r, t, k, p): # factor in direction from old branch method when creating new nodes?  Pass in parent as a reference?
+        self.parent = parent
+
+        # Determining Stock Price
+        if dir < 0 and self.parent is not None:
+            self.stock_price = self.parent.stock_price * d
+        elif dir > 0 and self.parent is not None:
+            self.stock_price = self.parent.stock_price * u
+        else:
+            self.stock_price = s_0
+
+        #
+        if time_period < n: # Branch and create two children
+            self.left = BinaryTreeNode(time_period + 1, self, -1, r, t, k, p) # down
+            self.right = BinaryTreeNode(time_period + 1, self, 1, r, t, k, p) # up
+            self.f = exp(-r * t) * (p * self.left.f + (1 - p) * self.right.f) # Fix 't', if it is supposed to represent the TOTAL time
+        else: # LEAF NODE CASE
+            self.left = None
+            self.right = None
+            self.f = self.stock_price - k
+
+
+        # option price = stock price - strike price
+        #self.f = exp(-r * t) * (p * f_u + (1 - p) * f_d) # Fix 't', if it is supposed to represent the TOTAL time
+
+filename = "sample"
 file = open(filename, "r")
-lines = []
-for line in file:
-    lines.append(line)
+fileText = file.read()
+lines = fileText.split('\n')
+
+# for line in file:
+    # lines.append(line)
 
 for line in lines:
-    vars = line.split('\t')
+    vars = line.split('\\t')
+    print(vars)
 
     # vars should have 6 elements, if not, make an exception here
     if len(vars) != 6:
+        print("EXCEPTION")
         raise SystemExit # maybe declare your own exception here?
 
-    r = float(vars[0]) #
-    total_t = float(vars[1]) #
-    n = float(vars[2]) #
+    r = float(vars[0]) # risk free rate
+    total_t = float(vars[1]) # T
+    n = float(vars[2]) # number of equal time periods
     sigma = float(vars[3]) # volatility
     s_0 = float(vars[4]) # original stock price
     k = float(vars[5]) # strike price, abbreviation for S_{0}
@@ -32,6 +68,10 @@ for line in lines:
 
     p = (exp(r * t) - d) / (u - d)
 
+    binom_tree = BinaryTree(r, n, s_0, k, p)
+    print(binom_tree.root.f)
+    print('\n')
+
 # recursive function for branching
 def branch(price, dir): # price is float, dir is boolean where true represents up and false represents down
     s_k1 = 0 # Abbreviation for S_{k + 1}
@@ -39,33 +79,3 @@ def branch(price, dir): # price is float, dir is boolean where true represents u
         s_k1 = u * s_0
     else: # dir == False
         s_k1 = d * s_0
-
-# Data structure for Binary Tree and Binary Tree Node
-class BinaryTree():
-    def __init__(self, n):
-        self.root = BinaryTreeNode(0, None, 0)
-
-class BinaryTreeNode():
-    def  __init__(self, time, parent, dir): # factor in direction from old branch method when creating new nodes?  Pass in parent as a reference?
-        # Determining Stock Price
-        if dir < 0:
-            self.stock_price = self.parent.stock_price * d
-        elif dir > 0:
-            self.stock_price = self.parent.stock_price * u
-        else:
-            self.stock_price = s_0
-
-        #
-        if time < n: # Branch and create two children
-            self.left = BinaryTreeNode(time + t, self, -1)
-            self.right = BinaryTreeNode(time + t, self, 1)
-            self.f = exp(-r * t) * (p * self.left.f + (1 - p) * self.right.f) # Fix 't', if it is supposed to represent the TOTAL time
-        else: # LEAF NODE CASE
-            self.left = None
-            self.right = None
-            self.f = self.stock_price - k
-
-        self.parent = parent
-
-        # option price = stock price - strike price
-        #self.f = exp(-r * t) * (p * f_u + (1 - p) * f_d) # Fix 't', if it is supposed to represent the TOTAL time
