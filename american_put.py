@@ -21,15 +21,24 @@ class BinaryTreeNode(): # time_period ranges from 0 to n, and is basically the l
         else:
             self.stock_price = s_0
 
-        #
+        #if self.parent is not None:
+        #    print('parent stock price is ', self.parent.stock_price)
+        # print('stock price is ', self.stock_price)
+
+        # debug: what time period we are at
+        # print('time period is ', time_period)
+
+        # Assigning left, right, and option price 'f' depending on whether we are at a leaf or not
         if time_period < n: # Branch and create two children
+            # print('Down Node')
             self.left = BinaryTreeNode(time_period + 1, self, -1, r, t, k, p) # down
+            # print('Up Node')
             self.right = BinaryTreeNode(time_period + 1, self, 1, r, t, k, p) # up
-            self.f = exp(-r * t) * (p * self.left.f + (1 - p) * self.right.f) # Fix 't', if it is supposed to represent the TOTAL time
+            self.f = exp(-r * t * n) * (p * self.left.f + (1 - p) * self.right.f) # Fix 't', if it is supposed to represent the TOTAL time
         else: # LEAF NODE CASE
             self.left = None
             self.right = None
-            self.f = self.stock_price - k
+            self.f = k - self.stock_price
 
 
         # option price = stock price - strike price
@@ -45,7 +54,7 @@ lines = fileText.split('\n')
 
 for line in lines:
     vars = line.split('\\t')
-    print(vars)
+    # print(vars)
 
     # vars should have 6 elements, if not, make an exception here
     if len(vars) != 6:
@@ -53,29 +62,34 @@ for line in lines:
         raise SystemExit # maybe declare your own exception here?
 
     r = float(vars[0]) # risk free rate
-    total_t = float(vars[1]) # T
-    n = float(vars[2]) # number of equal time periods
+    total_t = float(vars[1]) # T in years
+    n = float(vars[2]) # number of equal time periods/steps
     sigma = float(vars[3]) # volatility
     s_0 = float(vars[4]) # original stock price
     k = float(vars[5]) # strike price, abbreviation for S_{0}
 
     t = total_t / n # delta t
 
-    # calculate 'u' and 'p'
-    # u = e^{sigma * sqrt{t}}
+    # calculate 'u' and 'd'}
     u = exp(sigma * sqrt(t))
     d = 1 / u
 
-    p = (exp(r * t) - d) / (u - d)
+    # debug for u and d
+    #print("u is ", u, "and d is ", d)
+
+    p = (exp(r * total_t) - d) / (u - d)
+
+    # debug for p
+    # print('p is', p)
 
     binom_tree = BinaryTree(r, n, s_0, k, p)
     print(binom_tree.root.f)
     print('\n')
 
 # recursive function for branching
-def branch(price, dir): # price is float, dir is boolean where true represents up and false represents down
-    s_k1 = 0 # Abbreviation for S_{k + 1}
-    if dir is True:
-        s_k1 = u * s_0
-    else: # dir == False
-        s_k1 = d * s_0
+#def branch(price, dir): # price is float, dir is boolean where true represents up and false represents down
+#    s_k1 = 0 # Abbreviation for S_{k + 1}
+#    if dir is True:
+#        s_k1 = u * s_0
+#    else: # dir == False
+#        s_k1 = d * s_0
