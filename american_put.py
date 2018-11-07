@@ -2,7 +2,7 @@
 # CSE 390 HW2 Part 1
 
 from math import exp, sqrt
-
+import time
 
 # Data structure for Binary Tree and Binary Tree Node
 class BinaryTree():
@@ -43,8 +43,8 @@ class BinaryTreeNode(): # time_period ranges from 0 to n, and is basically the l
 
         # option price = stock price - strike price
         #self.f = exp(-r * t) * (p * f_u + (1 - p) * f_d) # Fix 't', if it is supposed to represent the TOTAL time
-
-filename = "sample"
+start = time.time()
+filename = input('Enter filename: ')
 file = open(filename, "r")
 fileText = file.read()
 lines = fileText.split('\n')
@@ -53,8 +53,8 @@ lines = fileText.split('\n')
     # lines.append(line)
 
 for line in lines:
-    vars = line.split('\\t')
-    # print(vars)
+    vars = line.split('\t')
+    print(vars)
 
     # vars should have 6 elements, if not, make an exception here
     if len(vars) != 6:
@@ -85,6 +85,9 @@ for line in lines:
     binom_tree = BinaryTree(r, n, s_0, k, p)
     print(binom_tree.root.f)
     print('\n')
+
+end = time.time()
+print('Total run time:', end - start, 'ms')
 
 # recursive function for branching
 #def branch(price, dir): # price is float, dir is boolean where true represents up and false represents down
