@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb8c150a-e464-4905-b270-0a09a862cec4" name="Default" comment="Add newly formatted test file to previous commit">
+    <list default="true" id="cb8c150a-e464-4905-b270-0a09a862cec4" name="Default" comment="Add extra test cases and fix option bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/american_put.py" beforeDir="false" afterPath="$PROJECT_DIR$/american_put.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/asian_call.py" beforeDir="false" afterPath="$PROJECT_DIR$/asian_call.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sample2.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,47 +15,62 @@
     <session id="1141554215">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.27" value="1" />
+          <entry key="project.open.time.30" value="1" />
           <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.39" value="2" />
           <entry key="project.open.time.40" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.47" value="1" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="160" />
-          <entry key="Python" value="1774" />
+          <entry key="PLAIN_TEXT" value="203" />
+          <entry key="Python" value="1861" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1774" />
+          <entry key="py" value="1861" />
           <entry key="sample" value="23" />
-          <entry key="txt" value="137" />
+          <entry key="txt" value="180" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="sample" value="1" />
+          <entry key="txt" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/american_put.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="40" column="31" lean-forward="true" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+            <state relative-caret-position="352">
+              <caret line="111" column="6" selection-start-line="111" selection-start-column="6" selection-end-line="111" selection-end-column="6" />
+              <folding>
+                <element signature="e#48#74#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/asian_call.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="108" column="6" selection-start-line="108" selection-start-column="6" selection-end-line="108" selection-end-column="6" />
               <folding>
                 <element signature="e#48#74#0" expanded="true" />
               </folding>
@@ -66,13 +79,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/asian_call.py">
+        <entry file="file://$PROJECT_DIR$/sample2.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="99" column="40" lean-forward="true" selection-start-line="99" selection-start-column="40" selection-end-line="99" selection-end-column="40" />
-              <folding>
-                <element signature="e#48#74#0" expanded="true" />
-              </folding>
+            <state>
+              <caret selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -89,6 +99,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>option price</find>
+      <find>print</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -100,8 +111,8 @@
       <list>
         <option value="$PROJECT_DIR$/hw2.py" />
         <option value="$PROJECT_DIR$/sample" />
-        <option value="$PROJECT_DIR$/asian_call.py" />
         <option value="$PROJECT_DIR$/american_put.py" />
+        <option value="$PROJECT_DIR$/asian_call.py" />
       </list>
     </option>
   </component>
@@ -117,6 +128,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -128,7 +140,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -276,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1541628484922</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add extra test cases and fix option bug">
+      <created>1541879246981</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1541879247004</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -287,8 +305,8 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2774799" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3632708" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3994638" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -313,7 +331,8 @@
     <MESSAGE value="Fixing bugs and adding debugging statements" />
     <MESSAGE value="Adding Asian Call Option first draft" />
     <MESSAGE value="Add newly formatted test file to previous commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add newly formatted test file to previous commit" />
+    <MESSAGE value="Add extra test cases and fix option bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add extra test cases and fix option bug" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.txt">
@@ -326,20 +345,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/asian_call.py">
+    <entry file="file://$PROJECT_DIR$/sample2.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="99" column="40" lean-forward="true" selection-start-line="99" selection-start-column="40" selection-end-line="99" selection-end-column="40" />
+        <state>
+          <caret selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/american_put.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="111" column="6" selection-start-line="111" selection-start-column="6" selection-end-line="111" selection-end-column="6" />
           <folding>
             <element signature="e#48#74#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/american_put.py">
+    <entry file="file://$PROJECT_DIR$/asian_call.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="40" column="31" lean-forward="true" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+        <state relative-caret-position="215">
+          <caret line="108" column="6" selection-start-line="108" selection-start-column="6" selection-end-line="108" selection-end-column="6" />
           <folding>
             <element signature="e#48#74#0" expanded="true" />
           </folding>

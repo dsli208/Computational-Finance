@@ -7,7 +7,7 @@ import time
 # Data structure for Binary Tree and Binary Tree Node
 class BinaryTree():
     def __init__(self, r, n, s_0, k, p):
-        self.root = BinaryTreeNode(0, None, 0, r, t, k, p, 0)
+        self.root = BinaryTreeNode(0, None, 0, r, t, k, p, s_0)
 
     def tree_debug(self):
         self.root.node_debug()
@@ -36,28 +36,28 @@ class BinaryTreeNode(): # time_period ranges from 0 to n, and is basically the l
         # print('time period is ', time_period)
 
         # Assigning left, right, and option price 'f' depending on whether we are at a leaf or not
-        if time_period < n: # Branch and create two children
+        if self.time_period < n: # Branch and create two children
             # print('Down Node')
-            self.left = BinaryTreeNode(time_period + 1, self, -1, r, t, k, p, stock_price_sum + self.stock_price) # down
+            self.left = BinaryTreeNode(self.time_period + 1, self, -1, r, t, k, p, self.stock_price_sum + self.stock_price * d) # down
             # print('Up Node')
-            self.right = BinaryTreeNode(time_period + 1, self, 1, r, t, k, p, stock_price_sum + self.stock_price) # up
+            self.right = BinaryTreeNode(self.time_period + 1, self, 1, r, t, k, p, self.stock_price_sum + self.stock_price * u) # up
             self.f = exp(-r * t) * (p * self.left.f + (1 - p) * self.right.f) # Fix 't', if it is supposed to represent the TOTAL time
         else: # LEAF NODE CASE
             self.left = None
             self.right = None
             # FIX THIS FOR ASIAN CALL OPTION
-            running_avg_price = stock_price_sum / (time_period + 1)
+            running_avg_price = self.stock_price_sum / (self.time_period + 1)
             # print(stock_price_sum, ' ', time_period + 1, ' ', stock_price_sum / (time_period + 1))
             self.f = running_avg_price - k
             if self.f < 0:
                 self.f = 0
             # print('option price: ', self.f)
 
-            if k - self.stock_price > self.f:
-                self.f = k - self.stock_price
+            # if k - self.stock_price > self.f:
+                # self.f = k - self.stock_price
 
     def node_debug(self):
-        print('Node details: ', self.time_period, self.stock_price, self.f, self.stock_price_sum / (self.time_period + 1))
+        print('Node details: ', self.time_period, self.stock_price, self.f, self.stock_price_sum / (self.time_period + 1), self.stock_price_sum)
         if self.left is not None:
             print('Left/Down')
             self.left.node_debug()
