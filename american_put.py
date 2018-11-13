@@ -98,12 +98,12 @@ for line in lines:
     d = 1 / u
 
     # debug for u and d
-    print("u is ", u, "and d is ", d)
+    # print("u is ", u, "and d is ", d)
 
     p = (exp(r * t) - d) / (u - d)
 
     # debug for p
-    print('p is', p)
+    # print('p is', p)
 
     binom_tree = BinaryTree(r, n, s_0, k, p)
     print(binom_tree.root.f)
