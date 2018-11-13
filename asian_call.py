@@ -79,7 +79,7 @@ lines = fileText.split('\n')
 
 for line in lines:
     vars = line.split('\t')
-    print(vars)
+    # print(vars)
 
     # vars should have 6 elements, if not, make an exception here
     if len(vars) != 6:
