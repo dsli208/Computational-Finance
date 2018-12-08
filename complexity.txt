@@ -1,3 +1,0 @@
-a) 3.007 ms runtime for American put, 3.367 ms runtime for Asian call
-b) 150.35 estimated runtime for American put, 168.35 estimated runtime for Asian call
-c) T(n) = nlogn?
