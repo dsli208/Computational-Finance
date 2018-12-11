@@ -1,11 +1,14 @@
 import pandas as p
 import statsmodels.tsa.stattools as sm
 import statsmodels.graphics.tsaplots as s
-import statsmodels.regression.linear_model as lm
+import statsmodels.regression as lm
 import matplotlib.pyplot as plt
 import numpy as np
 from numpy.core.multiarray import ndarray
 from sklearn import datasets, linear_model
+from statsmodels.tsa.arima_model import ARIMA as a
+import statsmodels.tsa.ar_model as ar
+import statsmodels.tsa.arima_model as ma
 
 def mean(list):
     return sum(list) / len(list)
@@ -40,6 +43,7 @@ def calc_acf(data):
         cov_i = series_1.cov(series_2)
         acf.append(cov_i / variance)
 
+    # return s.acf(data)
     return acf
 
 def calc_pacf(data, lag):
@@ -76,3 +80,18 @@ pacf = calc_pacf(five_year_data, 10)
 print(pacf)
 pacf_plt = s.plot_pacf(pacf)
 plt.show()
+
+# Param estimation
+#model = a(five_year_data, order=(10,1,0))
+# model_fit = model.fit(disp=0)
+# print(model_fit.summary())
+
+ar_model = ar.AR(five_year_data)
+ar_model_fit = ar_model.fit(10)
+print("Params")
+print(ar_model_fit.params)
+
+ma_model = ma.ARMA(five_year_data.values, (0, 10))
+ma_model_fit = ma_model.fit()
+print("MA Params")
+print(ma_model_fit.params)
